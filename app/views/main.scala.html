@@ -1,0 +1,17 @@
+@import uk.gov.hmrc.hmrcfrontend.views.config.StandardBetaBanner
+@import uk.gov.hmrc.hmrcfrontend.views.html.helpers.HmrcStandardPage
+@import uk.gov.hmrc.hmrcfrontend.views.viewmodels.hmrcstandardpage.{HmrcStandardPageParams, Banners}
+
+
+
+
+@this(hmrcStandardPage: HmrcStandardPage, standardBetaBanner: StandardBetaBanner)
+
+@(pageTitle: String)(contentBlock: Html)(implicit request: RequestHeader, messages: Messages)
+
+@hmrcStandardPage(
+  HmrcStandardPageParams(
+    serviceName = Some("Calculate your tax"),
+    pageTitle = Some(pageTitle),
+    isWelshTranslationAvailable = false
+  ))(contentBlock)

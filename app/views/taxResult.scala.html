@@ -1,0 +1,22 @@
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import uk.gov.hmrc.hmrcfrontend.views.html.components._
+@import uk.gov.hmrc.hmrcfrontend.views.html.helpers._
+
+@this(
+    main: views.html.main,
+    govukButton: GovukButton
+)
+
+@(calculation: TaxCalculation)(implicit request: Request[_], messages: Messages)
+
+@main("Tax Calculation Result") {
+    <h1 class="govuk-heading-xl">Tax Calculation Result</h1>
+
+    <p class="govuk-body">For an income of £@calculation.income, your tax amount is:</p>
+    <p class="govuk-heading-l">£@calculation.taxAmount</p>
+
+    @govukButton(Button(
+        content = Text("Calculate Again"),
+        href = Some(routes.TaxCalculatorController.showCalculator().url)
+    ))
+}

@@ -1,0 +1,14 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+# HMRC Tax Calculator routes
+GET     /tax-calculator             controllers.TaxCalculatorController.showCalculator()
+POST    /calculate                  controllers.TaxCalculatorController.calculateTax()
+
+# Route for HMRC frontend static assets
+->      /hmrc-frontend              hmrcfrontend.Routes

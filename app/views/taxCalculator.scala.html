@@ -1,0 +1,31 @@
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import uk.gov.hmrc.hmrcfrontend.views.html.components._
+@import uk.gov.hmrc.hmrcfrontend.views.html.helpers._
+
+@this(
+    main: views.html.main,
+    formWithCSRF: FormWithCSRF,
+    govukInput: GovukInput,
+    govukButton: GovukButton
+)
+
+@(taxForm: Form[BigDecimal])(implicit request: Request[_], messages: Messages)
+
+@main("Calculate Your Tax") {
+    <h1 class="govuk-heading-xl">Calculate Your Tax</h1>
+
+    @formWithCSRF(action = routes.TaxCalculatorController.calculateTax()) {
+        @govukInput(Input(
+            id = "income",
+            name = "income",
+            label = Label(content = Text("Annual Income")),
+            classes = "govuk-input--width-10",
+            value = taxForm("income").value
+        ))
+
+        @govukButton(Button(
+            content = Text("Calculate Tax"),
+            inputType = Some("submit")
+        ))
+    }
+}
