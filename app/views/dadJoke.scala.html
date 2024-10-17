@@ -1,0 +1,22 @@
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import uk.gov.hmrc.hmrcfrontend.views.html.components._
+
+@this(
+    main: views.html.main,
+    govukButton: GovukButton
+)
+
+@(joke: String)(implicit request: Request[_], messages: Messages)
+
+@main("Dad Joke") {
+    <h1 class="govuk-heading-xl">Dad Joke</h1>
+
+    <p id="joke-text" class="govuk-body">@joke</p>
+
+    @govukButton(Button(
+        content = Text("Get New Joke"),
+        attributes = Map("id" -> "new-joke-button")
+    ))
+
+    <script src="@routes.Assets.versioned("javascripts/dadJoke.js")" type="text/javascript"></script>
+}
