@@ -10,5 +10,9 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 GET     /tax-calculator             controllers.TaxCalculatorController.showCalculator()
 POST    /calculate                  controllers.TaxCalculatorController.calculateTax()
 
+# Route for Dad Jokes
+GET     /dadjoke                    controllers.DadJokeController.showJoke()
+GET     /dadjoke/new                controllers.DadJokeController.newJoke()
+
 # Route for HMRC frontend static assets
 ->      /hmrc-frontend              hmrcfrontend.Routes
